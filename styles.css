@@ -30,7 +30,16 @@ body {
 
 @media (max-width: 768px) {
     .card {
-        height: 500px;
+        height: 80vh;
+        min-height: 500px;
+    }
+    
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        max-width: 100%;
     }
 }
 
@@ -50,6 +59,8 @@ body {
 .card-inside {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-front {
@@ -187,7 +198,7 @@ body {
     margin-bottom: 20px;
     box-shadow: 0 5px 15px rgba(214, 51, 108, 0.1);
     border: 1px solid #fcc2d7;
-    max-height: 100%;
+    flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
