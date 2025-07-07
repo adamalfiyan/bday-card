@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-front" id="card-front">
+                <div class="gift-box-wrapper">
+                    <div class="gift-box">
+                        <div class="gift-lid">
+                            <div class="gift-bow"></div>
+                        </div>
+                        <div class="gift-base"></div>
+                    </div>
+                    <div class="gift-tag animate__animated animate__pulse animate__infinite">
+                        <i class="fas fa-heart"></i>
+                        <h1>Tap to open</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="card-inside" id="card-inside">
+                <div class="invitation-header">
+                    <div class="hearts">
+                        <div class="heart heart1"></div>
+                        <div class="heart heart2"></div>
+                        <div class="heart heart3"></div>
+                        <div class="heart heart4"></div>
+                        <div class="heart heart5"></div>
+                    </div>
+                    <h1 class="animate__animated animate__fadeIn">Special Invitation</h1>
+                    <div class="date-display">
+                        <div class="calendar">
+                            <div class="calendar-header">July</div>
+                            <div class="calendar-day">08</div>
+                            <div class="calendar-year">2025</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="message">
+                    <h2 class="animate__animated animate__fadeIn animate__delay-1s">To my amazing girlfriend, Fiqah</h2>
+                    <p class="animate__animated animate__fadeIn animate__delay-2s">
+                        I would like to invite you to spend your birthday with me.
+                    </p>
+                    <p class="animate__animated animate__fadeIn animate__delay-3s">
+                        I hope you enjoy your day! Unfortunately, I will not be taking no as an answer so you have to come hehehe.
+                    </p>
+                    <div class="itinerary animate__animated animate__fadeIn animate__delay-4s">
+                        <h3>Our Day Together</h3>
+                        <ul>
+                            <li><span class="time">11:30 AM</span> - Movie Time</li>
+                            <li><span class="time">2:00 PM</span> - Surprise activity</li>
+                            <li><span class="time">5:30 PM</span> - Activity End</li>
+                            <li><span class="time">7:00 PM</span> - Dinner</li>
+                            <li><span class="time">8:00 PM</span> - Back to Woodlands</li>
+                            <li><span class="time">9:00 PM</span> - To the Airport!</li>
+                        </ul>
+                    </div>
+                    <p class="animate__animated animate__fadeIn animate__delay-5s">
+                        Will you join me for this special day?<br>
+                        <div class="response-buttons">
+                            <button id="accept-btn-1" class="response-btn yes-btn accept-btn">Yes me want</button>
+                            <button id="accept-btn-2" class="response-btn yes-btn accept-btn">Yes PLEASE</button>
+                        </div>
+                    </p>
+                    <p class="signature animate__animated animate__fadeIn animate__delay-6s">
+                        With love,<br>
+                        <span id="signature">Adam</span>
+                    </p>
+                </div>
+                <div class="controls">
+                    <button id="back-btn" class="btn">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="customize-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Customize Your Invitation</h2>
+            <div class="form-group">
+                <label for="recipient-name">Recipient Name:</label>
+                <input type="text" id="recipient-name" placeholder="Enter recipient name">
+            </div>
+            <div class="form-group">
+                <label for="sender-name">Your Name:</label>
+                <input type="text" id="sender-name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="custom-message">Invitation Message:</label>
+                <textarea id="custom-message" rows="4" placeholder="Enter your invitation message"></textarea>
+                <small>Use double line breaks to separate paragraphs. Only the first two paragraphs will be used.</small>
+            </div>
+            <div class="form-group">
+                <label for="event-date">Event Date:</label>
+                <input type="date" id="event-date">
+            </div>
+            <div class="form-group">
+                <label for="itinerary">Itinerary:</label>
+                <textarea id="itinerary" rows="5" placeholder="Format: 10:00 AM - Activity
+Each activity on a new line"></textarea>
+            </div>
+            <button id="save-custom" class="btn">Save Changes</button>
+        </div>
+    </div>
+
+    <!-- Audio element removed as requested -->
+
+    <script src="script-new.js"></script>
+</body>
+</html>

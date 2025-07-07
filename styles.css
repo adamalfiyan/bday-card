@@ -1,0 +1,678 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #fff0f6 0%, #ffdeeb 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    perspective: 1500px;
+}
+
+.card {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.card-front, .card-inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.card-inside {
+    background: linear-gradient(135deg, #ffdeeb 0%, #fcc2d7 100%);
+    transform: rotateY(180deg);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Gift Box Styles */
+.gift-box-wrapper {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    position: relative;
+    perspective: 1000px;
+}
+
+.gift-box {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+.gift-box-wrapper:hover .gift-box {
+    transform: rotateY(30deg) rotateX(20deg);
+}
+
+.gift-lid {
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    background-color: #ff8fab;
+    top: -30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 0.5s ease;
+    transform-origin: bottom;
+}
+
+.gift-box-wrapper:hover .gift-lid {
+    transform: translateY(-20px) rotateX(20deg);
+}
+
+.gift-bow {
+    position: absolute;
+    width: 60px;
+    height: 25px;
+    background-color: #ff6b95;
+    top: -15px;
+    left: 45px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+.gift-bow:before, .gift-bow:after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 35px;
+    background-color: #ff6b95;
+    border-radius: 50%;
+}
+
+.gift-bow:before {
+    left: -10px;
+    transform: rotate(-30deg);
+}
+
+.gift-bow:after {
+    right: -10px;
+    transform: rotate(30deg);
+}
+
+.gift-base {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: #ff8fab;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.gift-tag {
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    text-align: center;
+}
+
+.gift-tag h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #d6336c;
+    font-size: 28px;
+    margin-top: 10px;
+}
+
+.gift-tag i {
+    color: #d6336c;
+    font-size: 24px;
+}
+
+/* Inside Card Styles */
+.invitation-header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    height: 180px;
+}
+
+.invitation-header h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #d6336c;
+    font-size: 42px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.message {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(214, 51, 108, 0.1);
+    border: 1px solid #fcc2d7;
+}
+
+.message h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #d6336c;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.message p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.signature {
+    text-align: right;
+    font-style: italic;
+}
+
+#signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: #d6336c;
+}
+
+/* Calendar Display */
+.date-display {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.calendar {
+    width: 100px;
+    height: 120px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border: 2px solid #f06595;
+}
+
+.calendar-header {
+    width: 100%;
+    height: 30px;
+    background-color: #f06595;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.calendar-day {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+    font-weight: bold;
+    color: #d6336c;
+}
+
+.calendar-year {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #666;
+}
+
+/* Hearts */
+.hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #f06595;
+    transform: rotate(45deg);
+}
+
+.heart:before,
+.heart:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f06595;
+}
+
+.heart:before {
+    top: -15px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: -15px;
+}
+
+.heart1 {
+    top: 20px;
+    left: 20px;
+    animation: pulse 6s ease-in-out infinite;
+    opacity: 0.8;
+    transform: rotate(45deg) scale(0.6);
+}
+
+.heart2 {
+    top: 10px;
+    left: 80px;
+    animation: pulse 7s ease-in-out infinite;
+    opacity: 0.7;
+    transform: rotate(45deg) scale(0.5);
+}
+
+.heart3 {
+    top: 30px;
+    right: 80px;
+    animation: pulse 5s ease-in-out infinite;
+    opacity: 0.9;
+    transform: rotate(45deg) scale(0.7);
+}
+
+.heart4 {
+    top: 15px;
+    right: 30px;
+    animation: pulse 8s ease-in-out infinite;
+    opacity: 0.6;
+    transform: rotate(45deg) scale(0.4);
+}
+
+.heart5 {
+    top: 25px;
+    left: 50%;
+    animation: pulse 9s ease-in-out infinite;
+    opacity: 0.8;
+    transform: rotate(45deg) scale(0.6);
+}
+
+@keyframes pulse {
+    0% { transform: rotate(45deg) scale(0.6); }
+    50% { transform: rotate(45deg) scale(0.8); }
+    100% { transform: rotate(45deg) scale(0.6); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Itinerary Styles */
+.itinerary {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid #f06595;
+}
+
+.itinerary h3 {
+    color: #d6336c;
+    margin-bottom: 10px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+}
+
+.itinerary ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.itinerary li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #fcc2d7;
+    display: flex;
+    align-items: center;
+}
+
+.itinerary li:last-child {
+    border-bottom: none;
+}
+
+.itinerary .time {
+    font-weight: bold;
+    color: #d6336c;
+    margin-right: 10px;
+    min-width: 80px;
+}
+
+/* Response Buttons */
+.response-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.response-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.yes-btn {
+    background-color: #f06595;
+    color: white;
+}
+
+.yes-btn:hover {
+    background-color: #d6336c;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.maybe-btn {
+    background-color: #fcc2d7;
+    color: #d6336c;
+}
+
+.maybe-btn:hover {
+    background-color: #ffdeeb;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Response Messages */
+.response-message {
+    text-align: center;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.response-message h3 {
+    font-family: 'Dancing Script', cursive;
+    color: #d6336c;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.yes-response {
+    border: 2px solid #f06595;
+    box-shadow: 0 0 15px rgba(240, 101, 149, 0.3);
+}
+
+.maybe-response {
+    border: 2px solid #fcc2d7;
+}
+
+.heart-animation {
+    position: relative;
+    height: 40px;
+    margin-top: 15px;
+}
+
+/* Confirmation Page Styles */
+.confirmation-page {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.confirmation-page h2 {
+    color: #d6336c;
+    font-family: 'Dancing Script', cursive;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.confirmation-page p {
+    font-size: 18px;
+    margin: 20px 0;
+    color: #333;
+    line-height: 1.5;
+}
+
+.confirmation-image {
+    margin: 20px auto;
+    height: 100px;
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+}
+
+.big-heart {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-color: #f06595;
+    transform-origin: center;
+    animation: pulse 1.5s ease infinite;
+    z-index: 1;
+}
+
+.big-heart:before,
+.big-heart:after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #f06595;
+    border-radius: 50%;
+}
+
+.big-heart:before {
+    top: -30px;
+    left: 0;
+}
+
+.big-heart:after {
+    top: 0;
+    left: 30px;
+}
+
+@keyframes pulse {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#customize-btn {
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+#customize-btn:hover {
+    background-color: #3a5a8c;
+    transform: translateY(-3px);
+}
+
+.btn {
+    padding: 8px 15px;
+    background-color: #d6336c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    background-color: #c2255c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    .card {
+        height: 500px;
+    }
+    
+    .happy-birthday h1 {
+        font-size: 32px;
+    }
+    
+    .message h2 {
+        font-size: 24px;
+    }
+    
+    .envelope-wrapper {
+        transform: scale(0.8);
+    }
+}
+
+/* Card flip animation */
+.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Confetti Animation */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    border-radius: 0;
+    animation: fall linear forwards;
+    z-index: 1000;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+/* Floating Hearts Animation */
+.floating-heart {
+    position: absolute;
+    animation: float-up linear forwards;
+    opacity: 0.8;
+    z-index: 10;
+    bottom: 10px;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-200px) scale(1.5);
+        opacity: 0;
+    }
+}
